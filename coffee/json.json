@@ -1,0 +1,16 @@
+{
+    "TA": false,
+    "order": [
+        {
+            "name": "Latte Macchiato",
+            "size": "Large (350 ml)",
+            "topping": "Marshmellow"
+        },
+        {
+            "name": "Caffe Mocha",
+            "size": "Medium (250 ml)",
+            "topping": "Extra milk"
+        }
+    ],
+    "time": "15:00:00"
+}

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addForm</class>
+ <widget class="QDialog" name="addForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>332</width>
+    <height>420</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="AddButton">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>180</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добавить</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>11</y>
+     <width>141</width>
+     <height>47</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="CoffeeNlabel">
+      <property name="text">
+       <string>Select coffee</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="NameBox">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Latte</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cappucino</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mocco</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Frappe</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Espresso</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>144</y>
+     <width>141</width>
+     <height>47</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="TopNlabel">
+      <property name="text">
+       <string>Select topping</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="TopBox">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Cinnamon</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Marshmellow</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Extra milk</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>283</y>
+     <width>141</width>
+     <height>47</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="Sizelabel">
+      <property name="text">
+       <string>Select size</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="SizeBox">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Standart (200ml)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Large (350ml)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Huge(500ml)</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
