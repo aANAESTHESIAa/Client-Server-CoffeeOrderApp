@@ -1,39 +1,28 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-
-
 #include <QTableView>
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
-
-
     socket = new QTcpSocket(this);
         connect(socket,SIGNAL(readyRead()),this,SLOT(sockReady()));
         connect(socket,SIGNAL(disconnected()),this,SLOT(sockDisk()));
         socket->connectToHost("127.0.0.1",4444);
-
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-int i=0;
 
 void MainWindow::on_AddMainButton_clicked()
 {
-
-
     file.setFileName("C:\\Users\\DUTCH\\Documents\\coffee\\json.json");
-
-
-
-
         if (file.open(QIODevice::WriteOnly))
         {
            QVariantMap map;
@@ -46,7 +35,6 @@ void MainWindow::on_AddMainButton_clicked()
                QMessageBox::warning(nullptr,"Attention!","Please choose coffee type first!");
                return void();
            }
-
 
            if(ui->comboBox_2->currentIndex() > -1)
            {
@@ -89,26 +77,23 @@ void MainWindow::on_AddMainButton_clicked()
             QStandardItemModel* model = new QStandardItemModel(nullptr);
             model->setHorizontalHeaderLabels(QStringList()<<"Coffee"<<"Topping"<<"Size");
           docArr = QJsonValue(doc.object().value("order")).toArray();
-          for (int i=0; i<docArr.count();i++)
+          for (int i=0; i<docArr.count(); i++)
           {
              QStandardItem* item_col_1 = new QStandardItem(docArr.at(i).toObject().value("name").toString());
              QStandardItem* item_col_2 = new QStandardItem(docArr.at(i).toObject().value("topping").toString());
              QStandardItem* item_col_3 = new QStandardItem(docArr.at(i).toObject().value("size").toString());
              model->appendRow(QList<QStandardItem*>()<<item_col_1<<item_col_2<<item_col_3);
-
           }
            ui->tableView->setModel(model);
            ui->tableView->resizeColumnsToContents();
-
         }
-
     }
 else
     {
         QMessageBox::information(nullptr,"Info","File open failure");
     }
-
 }
+
 
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
@@ -157,13 +142,6 @@ void MainWindow::on_comboBox_currentIndexChanged(int index)
 }
 
 
-
-
-
-
-
-
-
 void MainWindow::on_DelMainButton_clicked()
 {
     if (file.open(QIODevice::WriteOnly | QIODevice::Truncate))
@@ -175,10 +153,8 @@ void MainWindow::on_DelMainButton_clicked()
         doc = QJsonDocument::fromJson(QByteArray(file.readAll()),&docError);
         file.close(); }
     ui->tableView->setModel(model);
-
-
-
 }
+
 
 void MainWindow::on_FinishMainButton_clicked()
 {
@@ -188,9 +164,6 @@ void MainWindow::on_FinishMainButton_clicked()
                return void();
     }
 
-
-
-
     if (file.open(QIODevice::ReadOnly|QFile::Text))
     {
         docf = QJsonDocument::fromJson(QByteArray(file.readAll()),&docError);
@@ -198,31 +171,19 @@ void MainWindow::on_FinishMainButton_clicked()
 
     if (file.open(QIODevice::WriteOnly))
      {
-
-
-
-         QJsonValue a=ui->timeEdit->time().toString();
+         QJsonValue a = ui->timeEdit->time().toString();
          QJsonValue b = ui->checkBox->isChecked();
-
-
-
-
 
          QJsonObject prost =docf.object();
          prost.insert("time",a);
-          prost.insert("TA",b);
-
+         prost.insert("TA",b);
 
          docf.setObject(prost);
 
-
-
         file.write(docf.toJson());
-         file.close();
+        file.close();
 
     }
-
-
 
     if(socket->isOpen())
     {
@@ -233,10 +194,13 @@ void MainWindow::on_FinishMainButton_clicked()
        QMessageBox::information(this,"info","connection failure");
     }
 }
+
+
 void MainWindow::sockDisk()
 {
     socket->deleteLater();
 }
+
 
 void MainWindow::sockReady()
 {
@@ -247,9 +211,6 @@ void MainWindow::sockReady()
 
         cdoc = QJsonDocument::fromJson(Data, &cdocEr);
 
-
-
-
         if (cdocEr.errorString().toInt()==QJsonParseError::NoError)
         {
             if ((cdoc.object().value("type").toString() == "connect") && (cdoc.object().value("status").toString() == "yes"))
@@ -258,10 +219,6 @@ void MainWindow::sockReady()
             }
             else if (cdoc.object().value("type").toString() == "resultselect")
             {
-
-
-
-
 
 
          QJsonObject jsonObject = cdoc.object().value("result").toObject();
@@ -281,9 +238,6 @@ void MainWindow::sockReady()
 
             QString time;
             time = QJsonValue(jsonObject.value("time")).toString();
-
-
-
 
 
              for (int p=0; p<jsonArray.count(); p++)
@@ -309,10 +263,6 @@ void MainWindow::sockReady()
              {
                QMessageBox::information(this,"Thank you! We've booked a table for you! Your order:",res+"\n Please come by "+time);
              }
-
-
-
-
 
            }
             else
